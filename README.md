@@ -1,16 +1,22 @@
 # date_extractor_mds
 
-A package for extracting dates!
+This project provides a Python utility package to extract specific components (year, month, day, and time) from ISO 8601 date strings. These functions can be applied individually or integrated with data analysis workflows in Pandas, simplifying date manipulation and analysis.
 
 ## Installation
 
 ```bash
 $ pip install date_extractor_mds
 ```
-
 ## Usage
 
-- TODO
+- extract_year: Extracts the year as a four-digit integer from an ISO 8601 date string.
+- extract_month: Retrieves the month as an integer (1-12) from the ISO 8601 date.
+- extract_day: Captures the day as an integer (1-31) from the ISO date.
+- extract_time: Returns the time component as a string in hh:mm:ss format.
+
+## Position in Python Ecosystem:
+
+This package complements existing Python libraries like datetime and pandas by offering specialized, lightweight utilities focused solely on ISO 8601 string manipulation. While datetime provides similar functionality, this package simplifies usage by bypassing full date parsing for basic extraction tasks, increasing performance in large-scale data analysis.
 
 ## Contributing
 
