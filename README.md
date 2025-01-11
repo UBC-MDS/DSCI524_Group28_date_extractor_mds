@@ -20,7 +20,7 @@ This package complements existing Python libraries like datetime and pandas by o
 
 ## Contributing
 
-Interested in contributing? Check out the contributing guidelines. Please note that this project is released with a Code of Conduct. By contributing to this project, you agree to abide by its terms.
+Interested in contributing? Check out the [Contributing Guidelines](CONTRIBUTING.md). Please note that this project is released with a Code of Conduct. By contributing to this project, you agree to abide by its terms.
 
 ## Contributors
 
@@ -28,7 +28,7 @@ Rashid Mammadov, Derek Rodgers, Yibin Long, Fazeeia Mohammed.
 
 ## License
 
-`date_extractor_mds` was created by Rashid Mammadov. It is licensed under the terms of the MIT license.
+The Date Extractor Python Package was created by Rashid Mammadov, Derek Rodgers, Yibin Long, and Fazeeia Mohammed. It is licensed under the terms of the MIT license, linked [here](LICENSE).
 
 ## Credits
 
