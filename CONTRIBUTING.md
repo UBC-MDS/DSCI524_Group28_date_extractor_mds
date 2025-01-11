@@ -1,59 +1,49 @@
-# Contributing to `date_extractor_mds`
+# Contributing
 
-Thank you for considering contributing to `date_extractor_mds`! Every contribution is valuable, and credit will always be given. Whether it's fixing a bug, adding a feature, or improving documentation, your help is greatly appreciated.
+Contributions are welcome, and they are greatly appreciated! Every little bit
+helps, and credit will always be given.
 
 ## Types of Contributions
 
-### 🐛 Report Bugs
+### Report Bugs
 
-When reporting a bug, please include:
+If you are reporting a bug, please include:
 
-- Your operating system (name and version)
-- Any relevant details about your local setup
-- Steps to reproduce the bug
+* Your operating system name and version.
+* Any details about your local setup that might be helpful in troubleshooting.
+* Detailed steps to reproduce the bug.
 
-### 🔧 Fix Bugs
+### Fix Bugs
 
-Look through the [GitHub issues](https://github.com/your-repo/issues) for any bugs marked with:
-- `bug`
-- `help wanted`
+Look through the GitHub issues for bugs. Anything tagged with "bug" and "help
+wanted" is open to whoever wants to implement it.
 
-These issues are open for anyone to help resolve.
+### Implement Features
 
-### ✨ Implement Features
+Look through the GitHub issues for features. Anything tagged with "enhancement"
+and "help wanted" is open to whoever wants to implement it.
 
-Explore the [GitHub issues](https://github.com/your-repo/issues) for any features tagged with:
-- `enhancement`
-- `help wanted`
+### Write Documentation
 
-Feel free to implement any features that interest you!
+You can never have enough documentation! Please feel free to contribute to any
+part of the documentation, such as the official docs, docstrings, or even
+on the web in blog posts, articles, and such.
 
-### 📝 Write Documentation
+### Submit Feedback
 
-Documentation is key to any project. You can contribute by improving:
-- Official documentation
-- Docstrings within the code
-- Web content such as blog posts and articles
+If you are proposing a feature:
 
-### 💬 Submit Feedback
+* Explain in detail how it would work.
+* Keep the scope as narrow as possible, to make it easier to implement.
+* Remember that this is a volunteer-driven project, and that contributions
+  are welcome :)
 
-If you're proposing a new feature, please provide:
+## Get Started!
 
-- A detailed explanation of how it would work
-- A narrow scope to make implementation easier
-- A reminder that this is a volunteer-driven project, and your contributions are always welcome!
+Ready to contribute? Here's how to set up `date_extractor_mds` for local development.
 
-## Get Started
-
-Ready to start contributing? Here's how to set up `date_extractor_mds` for local development.
-
-1. **Download** a copy of the repository:
-   
-   ```bash
-   git clone https://github.com/your-repo/date_extractor_mds.git
-
-
-2. Install `date_extractor_mds` using `poetry` (This can be done using the official poetry install website):
+1. Download a copy of `date_extractor_mds` locally.
+2. Install `date_extractor_mds` using `poetry`:
 
     ```console
     $ poetry install
