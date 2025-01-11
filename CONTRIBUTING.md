@@ -3,6 +3,10 @@
 Contributions are welcome, and they are greatly appreciated! Every little bit
 helps, and credit will always be given.
 
+## Prerequisites
+
+Before you make a substantial pull request, you should always file an issue and make sure someone from the team agrees that it's a problem. If you've found a bug, create an associated issue including with detailed instructions for reproducing it.
+
 ## Types of Contributions
 
 ### Report Bugs
@@ -11,7 +15,9 @@ If you are reporting a bug, please include:
 
 * Your operating system name and version.
 * Any details about your local setup that might be helpful in troubleshooting.
+* Expected vs. actual results.
 * Detailed steps to reproduce the bug.
+* Screenshots, if applicable.
 
 ### Fix Bugs
 
@@ -33,10 +39,17 @@ on the web in blog posts, articles, and such.
 
 If you are proposing a feature:
 
-* Explain in detail how it would work.
-* Keep the scope as narrow as possible, to make it easier to implement.
-* Remember that this is a volunteer-driven project, and that contributions
-  are welcome :)
+1. Check existing issues to avoid duplicates.
+
+2. Open a new issue with the label `feature request`.
+
+3. Keep the scope as narrow as possible, to make it easier to implement.
+
+4. Include:
+
+    - A detailed description of the feature and how it would work.
+
+    - Use cases and why it would be helpful.
 
 ## Get Started!
 
@@ -71,3 +84,7 @@ Before you submit a pull request, check that it meets these guidelines:
 
 Please note that the `date_extractor_mds` project is released with a
 Code of Conduct. By contributing to this project you agree to abide by its terms.
+
+## Attribution
+
+This file was adapted from a template provided as part of [py-pkgs-cookiecutter](https://github.com/py-pkgs/py-pkgs-cookiecutter).
