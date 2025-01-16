@@ -80,7 +80,8 @@ def extract_year(iso_date: str) -> int:
     0  2023-07-16T12:34:56   2023
     1  2024-03-25T08:15:30   2024
     """
-    pass
+    validate_datetime(iso_date)
+    return int(iso_date.split("-")[0])
 
 
 def extract_month(iso_date: str) -> int:
