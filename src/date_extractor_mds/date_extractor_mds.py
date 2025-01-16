@@ -72,32 +72,41 @@ def extract_month(iso_date: str) -> int:
 def extract_day(iso_date: str) -> int:
     """
     Extract the day from an ISO 8601 date string.
-    This function can handle both individual strings and Pandas DataFrame columns via the Pandas `apply` method.
+
+    This function can handle both individual strings and Pandas Series.
 
     Parameters
     ----------
-    iso_date : str
-        A date string in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
+    iso_date : str or pandas.Series
+        A date string, or Pandas Series containing strings,
+        in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
 
     Returns
     -------
     int
-        The day as an integer (1-31).
+        The day as an integer (1-31)(if input was string)
+        
+    pandas.Series (if input was pandas.Series)
+        A pandas.Series containing day as two-digit integers.
 
     Examples
     --------
     >>> extract_day("2023-07-16T12:34:56")
     16
-    Apply the function to a Pandas DataFrame column:
+    
+
+    Apply the function to a Pandas Series:
 
     >>> import pandas as pd
     >>> data = {'dates': ["2023-07-16T12:34:56", "2024-03-25T08:15:30"]}
     >>> df = pd.DataFrame(data)
-    >>> df['days'] = df['dates'].apply(extract_day)
-    >>> print(df)
-                     dates  days
-    0  2023-07-16T12:34:56    16
-    1  2024-03-25T08:15:30    25
+    >>> day = extract_day(df['dates'])
+    >>> print(day)
+    0    2023
+    1    2024
+    Name: dates, dtype: int64
+    """
+    pass
     """
     pass
 
