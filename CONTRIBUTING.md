@@ -1,59 +1,62 @@
-# Contributing to `date_extractor_mds`
+# Contributing
 
-Thank you for considering contributing to `date_extractor_mds`! Every contribution is valuable, and credit will always be given. Whether it's fixing a bug, adding a feature, or improving documentation, your help is greatly appreciated.
+Contributions are welcome, and they are greatly appreciated! Every little bit
+helps, and credit will always be given.
+
+## Prerequisites
+
+Before you make a substantial pull request, you should always file an issue and make sure someone from the team agrees that it's a problem. If you've found a bug, create an associated issue including with detailed instructions for reproducing it.
 
 ## Types of Contributions
 
-### 🐛 Report Bugs
+### Report Bugs
 
-When reporting a bug, please include:
+If you are reporting a bug, please include:
 
-- Your operating system (name and version)
-- Any relevant details about your local setup
-- Steps to reproduce the bug
+* Your operating system name and version.
+* Any details about your local setup that might be helpful in troubleshooting.
+* Expected vs. actual results.
+* Detailed steps to reproduce the bug.
+* Screenshots, if applicable.
 
-### 🔧 Fix Bugs
+### Fix Bugs
 
-Look through the [GitHub issues](https://github.com/your-repo/issues) for any bugs marked with:
-- `bug`
-- `help wanted`
+Look through the GitHub issues for bugs. Anything tagged with "bug" and "help
+wanted" is open to whoever wants to implement it.
 
-These issues are open for anyone to help resolve.
+### Implement Features
 
-### ✨ Implement Features
+Look through the GitHub issues for features. Anything tagged with "enhancement"
+and "help wanted" is open to whoever wants to implement it.
 
-Explore the [GitHub issues](https://github.com/your-repo/issues) for any features tagged with:
-- `enhancement`
-- `help wanted`
+### Write Documentation
 
-Feel free to implement any features that interest you!
+You can never have enough documentation! Please feel free to contribute to any
+part of the documentation, such as the official docs, docstrings, or even
+on the web in blog posts, articles, and such.
 
-### 📝 Write Documentation
+### Submit Feedback
 
-Documentation is key to any project. You can contribute by improving:
-- Official documentation
-- Docstrings within the code
-- Web content such as blog posts and articles
+If you are proposing a feature:
 
-### 💬 Submit Feedback
+1. Check existing issues to avoid duplicates.
 
-If you're proposing a new feature, please provide:
+2. Open a new issue with the label `feature request`.
 
-- A detailed explanation of how it would work
-- A narrow scope to make implementation easier
-- A reminder that this is a volunteer-driven project, and your contributions are always welcome!
+3. Keep the scope as narrow as possible, to make it easier to implement.
 
-## Get Started
+4. Include:
 
-Ready to start contributing? Here's how to set up `date_extractor_mds` for local development.
+    - A detailed description of the feature and how it would work.
 
-1. **Download** a copy of the repository:
-   
-   ```bash
-   git clone https://github.com/your-repo/date_extractor_mds.git
+    - Use cases and why it would be helpful.
 
+## Get Started!
 
-2. Install `date_extractor_mds` using `poetry` (This can be done using the official poetry install website):
+Ready to contribute? Here's how to set up `date_extractor_mds` for local development.
+
+1. Download a copy of `date_extractor_mds` locally.
+2. Install `date_extractor_mds` using `poetry`:
 
     ```console
     $ poetry install
@@ -81,3 +84,7 @@ Before you submit a pull request, check that it meets these guidelines:
 
 Please note that the `date_extractor_mds` project is released with a
 Code of Conduct. By contributing to this project you agree to abide by its terms.
+
+## Attribution
+
+This file was adapted from a template provided as part of [py-pkgs-cookiecutter](https://github.com/py-pkgs/py-pkgs-cookiecutter).

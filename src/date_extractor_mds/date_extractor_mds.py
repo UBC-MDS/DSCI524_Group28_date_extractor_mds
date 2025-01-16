@@ -119,6 +119,9 @@ def extract_time(iso_date: str) -> str:
     DataFrame columns via the Pandas `apply` method.
 
 
+    This function can be applied to individual strings or used on Pandas 
+    DataFrame columns via the Pandas `apply` method.
+
     Parameters
     ----------
     iso_date : str
@@ -137,13 +140,13 @@ def extract_time(iso_date: str) -> str:
     '12:34:56'
 
     Apply the function to a Pandas DataFrame column:
-
+    
     >>> import pandas as pd
     >>> data = {'dates': ["2023-07-16T12:34:56", "2024-03-25T08:15:30"]}
     >>> df = pd.DataFrame(data)
-    >>> df['times'] = df['dates'].apply(extract_time)
+    >>> df['time'] = df['dates'].apply(extract_time)
     >>> print(df)
-                     dates     times
+                     dates      time
     0  2023-07-16T12:34:56  12:34:56
     1  2024-03-25T08:15:30  08:15:30
     """
