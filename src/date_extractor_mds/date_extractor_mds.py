@@ -106,7 +106,16 @@ def extract_day(iso_date: str) -> int:
     1    2024
     Name: dates, dtype: int64
     """
-    pass
+    # Validate the input if it's a string
+    if isinstance(iso_date, str):
+        validate_datetime(iso_date)  # Validate fuction
+        return int(iso_date[8:10])  # Extract the day from the string
+    
+    # If the input is a pandas Series
+    elif isinstance(iso_date, pd.Series):
+        iso_date.apply(validate_datetime)  # Validate fuction
+        return iso_date.apply(lambda x: int(x[8:10])) 
+    
     """
     pass
 
