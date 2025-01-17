@@ -49,18 +49,21 @@ def extract_year(iso_date: str) -> int:
     """
     Extract the year from an ISO 8601 date string.
 
-    This function can be applied to individual strings or used on Pandas 
-    DataFrame columns via the Pandas `apply` method.
+    This function accepts either an individual string, or
+    a Pandas Series.
 
     Parameters
     ----------
-    iso_date : str
-        A date string in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
+    iso_date : str or pandas.Series
+        A date string, or Pandas Series containing strings,
+        in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
 
     Returns
     -------
-    int
+    int (if input was string)
         The year as a four-digit integer.
+    pandas.Series (if input was pandas.Series)
+        A pandas.Series containing years as four-digit integers.
 
     Examples
     --------
@@ -69,16 +72,16 @@ def extract_year(iso_date: str) -> int:
     >>> extract_year("2023-07-16T12:34:56")
     2023
 
-    Apply the function to a Pandas DataFrame column:
+    Apply the function to a Pandas Series:
 
     >>> import pandas as pd
     >>> data = {'dates': ["2023-07-16T12:34:56", "2024-03-25T08:15:30"]}
     >>> df = pd.DataFrame(data)
-    >>> df['years'] = df['dates'].apply(extract_year)
-    >>> print(df)
-                     dates  years
-    0  2023-07-16T12:34:56   2023
-    1  2024-03-25T08:15:30   2024
+    >>> year = extract_year(df['dates'])
+    >>> print(year)
+    0    2023
+    1    2024
+    Name: dates, dtype: int64
     """
     validate_datetime(iso_date)
     return int(iso_date.split("-")[0])
