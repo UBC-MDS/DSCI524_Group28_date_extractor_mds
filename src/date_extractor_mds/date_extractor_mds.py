@@ -1,5 +1,6 @@
 import pandas as pd
 import re
+from datetime import datetime
 
 def validate_datetime(input_value):
     """
@@ -144,7 +145,7 @@ def extract_month(iso_date: str) -> int:
 
 
 
-def extract_day(datetime_input):
+def extract_day(iso_date):
     """
     Extract the day from an ISO 8601 date string.
 
@@ -184,65 +185,66 @@ def extract_day(datetime_input):
     
     # Handle single string input
     if isinstance(iso_date, str):
-       
-        day = int(iso_date[8:10])
-        
-        # Check if day is valid (between 1 and 31)
-        if not (1 <= day <= 31):
-            raise ValueError(f"Extracted day {day} is not valid. It must be between 1 and 31.")
-        
-        return day  
-
-    # Handle pandas Series input
-    elif isinstance(iso_date, pd.Series):
-        
-        days = iso_date.apply(lambda x: int(x[8:10]))  # Extract the day and save as series
-        
-        
-        if not all(days.between(1, 31)):
-            invalid_days = days[~days.between(1, 31)]  # Find the invalid days
-            raise ValueError(f"Invalid extracted days found: {invalid_days.tolist()}. They must be between 1 and 31.")
-        
-        return days  # Return the series of valid days    
-
-def extract_time(iso_date: str) -> str:
-    """
-    Extract the time from an ISO 8601 date string.
+        validate_datetime(iso_date)  # Validate fuction
+        return int(iso_date[8:10])  # Extract the day  from the string
     
-    This function can be applied to individual strings or used on Pandas 
-    DataFrame columns via the Pandas `apply` method.
+    # If the input is a pandas Series
+    elif isinstance(iso_date, pd.Series):
+        iso_date.apply(validate_datetime)  # Validate  fuction
+        return iso_date.apply(lambda x: int(x[8:10])) 
 
 
-    This function can be applied to individual strings or used on Pandas 
-    DataFrame columns via the Pandas `apply` method.
+def extract_time(datetime_input) -> str:
+    """
+    Extract the time from an ISO 8601 datetime string or a Pandas Series of ISO 8601 datetime strings.
+    
+    This function accepts either an individual string, or a Pandas Series.
 
     Parameters
     ----------
-    iso_date : str
-        A date string in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
+    datetime_input : str or pandas.Series
+        A datetime string, or a Pandas Series containing datetime strings,
+        in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
 
     Returns
     -------
-    str
-        The time as a string in the format hh:mm:ss.
+    datetime.time (if input was string)
+        The time as a datetime.time object.
+    pandas.Series (if input was pandas.Series)
+        A pandas.Series containing rows of datetime.time objects.
 
-      Examples
+    Examples
     --------
     Extract the time from a single date string:
 
     >>> extract_time("2023-07-16T12:34:56")
-    '12:34:56'
+    datetime.time(12, 34, 56)
 
     Apply the function to a Pandas DataFrame column:
     
     >>> import pandas as pd
     >>> data = {'dates': ["2023-07-16T12:34:56", "2024-03-25T08:15:30"]}
     >>> df = pd.DataFrame(data)
-    >>> df['time'] = df['dates'].apply(extract_time)
-    >>> print(df)
-                     dates      time
-    0  2023-07-16T12:34:56  12:34:56
-    1  2024-03-25T08:15:30  08:15:30
+    >>> times = extract_time(df['dates'])
+    >>> print(times)
+    0    12:34:56
+    1    08:15:30
+    Name: dates, dtype: object
     """
+    # Validate the datetime input
+    validate_datetime(datetime_input)
 
-    pass
+    # Define function to extract a single datetime string
+    def extract_single_time(datetime_str):
+        # Given a valid ISO 8601 format string, return the time as a datetime
+        time_string = datetime_str.split('T')[1]
+        time_obj = datetime.strptime(time_string, "%H:%M:%S").time()
+
+        return time_obj
+
+    if isinstance(datetime_input, str):
+        return extract_single_time(datetime_input)
+    elif isinstance(datetime_input, pd.Series):
+        return datetime_input.apply(extract_single_time)
+    else:
+        raise ValueError("Input must be a string or a pandas Series")
