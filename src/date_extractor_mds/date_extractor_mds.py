@@ -1,5 +1,6 @@
 import pandas as pd
 import re
+from datetime import datetime
 
 def validate_datetime(input_value):
     """
@@ -194,44 +195,57 @@ def extract_day(datetime_input):
     pass
 
 
-def extract_time(iso_date: str) -> str:
+def extract_time(datetime_input) -> str:
     """
-    Extract the time from an ISO 8601 date string.
+    Extract the time from an ISO 8601 datetime string or a Pandas Series of ISO 8601 datetime strings.
     
-    This function can be applied to individual strings or used on Pandas 
-    DataFrame columns via the Pandas `apply` method.
-
-
-    This function can be applied to individual strings or used on Pandas 
-    DataFrame columns via the Pandas `apply` method.
+    This function accepts either an individual string, or a Pandas Series.
 
     Parameters
     ----------
-    iso_date : str
-        A date string in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
+    datetime_input : str or pandas.Series
+        A datetime string, or a Pandas Series containing datetime strings,
+        in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
 
     Returns
     -------
-    str
-        The time as a string in the format hh:mm:ss.
+    datetime.time (if input was string)
+        The time as a datetime.time object.
+    pandas.Series (if input was pandas.Series)
+        A pandas.Series containing rows of datetime.time objects.
 
-      Examples
+    Examples
     --------
     Extract the time from a single date string:
 
     >>> extract_time("2023-07-16T12:34:56")
-    '12:34:56'
+    datetime.time(12, 34, 56)
 
     Apply the function to a Pandas DataFrame column:
     
     >>> import pandas as pd
     >>> data = {'dates': ["2023-07-16T12:34:56", "2024-03-25T08:15:30"]}
     >>> df = pd.DataFrame(data)
-    >>> df['time'] = df['dates'].apply(extract_time)
-    >>> print(df)
-                     dates      time
-    0  2023-07-16T12:34:56  12:34:56
-    1  2024-03-25T08:15:30  08:15:30
+    >>> times = extract_time(df['dates'])
+    >>> print(times)
+    0    12:34:56
+    1    08:15:30
+    Name: dates, dtype: object
     """
+    # Validate the datetime input
+    validate_datetime(datetime_input)
 
-    pass
+    # Define function to extract a single datetime string
+    def extract_single_time(datetime_str):
+        # Given a valid ISO 8601 format string, return the time as a datetime
+        time_string = datetime_str.split('T')[1]
+        time_obj = datetime.strptime(time_string, "%H:%M:%S").time()
+
+        return time_obj
+
+    if isinstance(datetime_input, str):
+        return extract_single_time(datetime_input)
+    elif isinstance(datetime_input, pd.Series):
+        return datetime_input.apply(extract_single_time)
+    else:
+        raise ValueError("Input must be a string or a pandas Series")
