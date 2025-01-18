@@ -111,37 +111,58 @@ def extract_year(iso_date: str) -> int:
     else:
         raise TypeError("Input must be either a string or a Pandas Series of strings.")
 
-def extract_month(iso_date: str) -> int:
+def extract_month(input_data) -> str:
     """
-    Extract the month from an ISO 8601 date string.
-    This function can handle both individual strings and Pandas DataFrame columns via the Pandas `apply` method.
+    Extract the month from an ISO 8601 date string or a DataFrame column.
+
+    This function accepts either an individual string, or a Pandas Series.
 
     Parameters
     ----------
-    iso_date : str
-        A date string in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
+    input_data : str or pandas.Series
+        A single ISO 8601 date string (YYYY-MM-DDThh:mm:ss) or a Pandas Series 
+        containing a column with such date strings.
 
     Returns
     -------
-    int
-        The month as an integer (1-12).
+    int or pandas.Series
+        If input is a string, returns the month as an integer (1-12).
+        If input is a pandas.Series, returns a Pandas Series with the extracted months.
 
     Examples
     --------
+    Extract the month from a single ISO 8601 string:
+    
     >>> extract_month("2023-07-16T12:34:56")
     7
-    Apply the function to a Pandas DataFrame column:
+
+    Process a Pandas Series column containing ISO 8601 strings:
 
     >>> import pandas as pd
-    >>> data = {'dates': ["2023-07-16T12:34:56", "2024-03-25T08:15:30"]}
+    >>> data = {'dates': ["2023-07-16T12:34:56", "2024-03-25T12:34:56"]}
     >>> df = pd.DataFrame(data)
-    >>> df['months'] = df['dates'].apply(extract_month)
-    >>> print(df)
-                     dates  months
-    0  2023-07-16T12:34:56       7
-    1  2024-03-25T08:15:30       3
+    >>> months = extract_month(df["dates"])
+    >>> print(months)
+    0    7.0
+    1    3.0
+    dtype: float64
     """
-    pass
+    # Validate the datetime input
+    validate_datetime(input_data)
+
+    # Define function to extract a single datetime string
+    def extract_single_month(datetime_str):
+        # Given a valid ISO 8601 format string, return the time as a datetime
+        time_obj = datetime.strptime(datetime_str.split('T')[0], "%Y-%m-%d")
+
+        return time_obj.month
+
+    if isinstance(input_data, str):
+        return extract_single_month(input_data)
+    elif isinstance(input_data, pd.Series):
+        return input_data.apply(extract_single_month)
+    else:
+        raise ValueError("Input must be a string or a pandas Series")
 
 
 def extract_day(datetime_input):
