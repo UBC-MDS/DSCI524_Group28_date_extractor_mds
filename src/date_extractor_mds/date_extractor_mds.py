@@ -1,19 +1,69 @@
+import pandas as pd
+import re
+
+def validate_datetime(input_value):
+    """
+    Validates whether the input is either:
+    1. A string containing a date in ISO 8601 format (YYYY-MM-DDThh:mm:ss), or
+    2. A Pandas Series containing strings in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
+    
+    If the input does not satisfy these conditions, the function raises:
+    - TypeError: If the input is not a string or a Pandas Series.
+    - ValueError: If the input string or one or more elements in the Series do not match the ISO 8601 format.
+    - ValueError: If the Series contains non-string elements.
+    
+    Parameters:
+    - input_value (str or pandas.Series): The input to validate.
+    
+    Returns:
+    - None: This function does not return a value. It stops execution by raising an exception if validation fails.
+    """
+    def is_iso8601_compliant(date_str):
+        """
+        Checks if a single string is in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
+
+        Parameters:
+        - date_str (str): The string to check.
+
+        Returns:
+        - bool: True if the string matches the ISO 8601 format, False otherwise.
+        """
+        iso8601_regex = r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$"
+        return bool(re.match(iso8601_regex, date_str))
+    
+    if isinstance(input_value, str):
+        # If input is a string, validate directly
+        if not is_iso8601_compliant(input_value):
+            raise ValueError(f"The input string '{input_value}' is not in valid ISO 8601 format.")
+    elif isinstance(input_value, pd.Series):
+        # If input is a Series, validate each element
+        if not all(isinstance(item, str) for item in input_value):
+            raise ValueError("All elements of the Pandas Series must be strings.")
+        if not input_value.apply(is_iso8601_compliant).all():
+            raise ValueError("One or more elements in the Pandas Series are not in valid ISO 8601 format.")
+    else:
+        # Raise error if input is neither string nor Series
+        raise TypeError("Input must be either a string or a Pandas Series of strings.")
+
 def extract_year(iso_date: str) -> int:
     """
     Extract the year from an ISO 8601 date string.
 
-    This function can be applied to individual strings or used on Pandas 
-    DataFrame columns via the Pandas `apply` method.
+    This function accepts either an individual string, or
+    a Pandas Series.
 
     Parameters
     ----------
-    iso_date : str
-        A date string in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
+    iso_date : str or pandas.Series
+        A date string, or Pandas Series containing strings,
+        in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
 
     Returns
     -------
-    int
+    int (if input was string)
         The year as a four-digit integer.
+    pandas.Series (if input was pandas.Series)
+        A pandas.Series containing years as four-digit integers.
 
     Examples
     --------
@@ -22,19 +72,43 @@ def extract_year(iso_date: str) -> int:
     >>> extract_year("2023-07-16T12:34:56")
     2023
 
-    Apply the function to a Pandas DataFrame column:
+    Apply the function to a Pandas Series:
 
     >>> import pandas as pd
     >>> data = {'dates': ["2023-07-16T12:34:56", "2024-03-25T08:15:30"]}
     >>> df = pd.DataFrame(data)
-    >>> df['years'] = df['dates'].apply(extract_year)
-    >>> print(df)
-                     dates  years
-    0  2023-07-16T12:34:56   2023
-    1  2024-03-25T08:15:30   2024
+    >>> year = extract_year(df['dates'])
+    >>> print(year)
+    0    2023
+    1    2024
+    Name: dates, dtype: int64
     """
-    pass
+    def extract_year_from_string(iso_date: str) -> int:
+        """
+        Extract the year from a single ISO 8601 date string.
 
+        Parameters
+        ----------
+        iso_date : str
+            A date string in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
+
+        Returns
+        -------
+        int
+            The year as a four-digit integer.
+        """
+        return int(iso_date.split("-")[0])
+
+    # Validate the input
+    validate_datetime(iso_date)
+
+    # Handle string or Pandas Series input
+    if isinstance(iso_date, str):
+        return extract_year_from_string(iso_date)
+    elif isinstance(iso_date, pd.Series):
+        return iso_date.apply(extract_year_from_string)
+    else:
+        raise TypeError("Input must be either a string or a Pandas Series of strings.")
 
 def extract_month(iso_date: str) -> int:
     """
@@ -69,9 +143,8 @@ def extract_month(iso_date: str) -> int:
     pass
 
 
-import pandas as pd
 
-def extract_day(iso_date: str) -> int:
+def extract_day(datetime_input):
     """
     Extract the day from an ISO 8601 date string.
 
@@ -107,6 +180,8 @@ def extract_day(iso_date: str) -> int:
     1    25
     Name: dates, dtype: int64
     """
+    validate_datetime(iso_date)  # Validate fuction
+    
     # Handle single string input
     if isinstance(iso_date, str):
        
@@ -128,11 +203,7 @@ def extract_day(iso_date: str) -> int:
             invalid_days = days[~days.between(1, 31)]  # Find the invalid days
             raise ValueError(f"Invalid extracted days found: {invalid_days.tolist()}. They must be between 1 and 31.")
         
-        return days  # Return the series of valid days
-
-
-
-    
+        return days  # Return the series of valid days    
 
 def extract_time(iso_date: str) -> str:
     """
