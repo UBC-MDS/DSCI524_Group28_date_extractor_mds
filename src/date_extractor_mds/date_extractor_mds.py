@@ -190,9 +190,6 @@ def extract_day(datetime_input):
     elif isinstance(iso_date, pd.Series):
         iso_date.apply(validate_datetime)  # Validate  fuction
         return iso_date.apply(lambda x: int(x[8:10])) 
-    
-    """
-    pass
 
 
 def extract_time(datetime_input) -> str:
