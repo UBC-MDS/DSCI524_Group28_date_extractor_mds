@@ -3,7 +3,7 @@ import pandas as pd
 from date_extractor_mds.date_extractor_mds import extract_day
 
 def test_extract_day_from_string():
-     """
+    """
     Test that the extract_day function correctly extracts the day 
     from a valid ISO 8601 date string.
 
@@ -18,7 +18,7 @@ def test_extract_day_from_string():
     assert result == 15, f"Expected 15, but got {result}"
 
 def test_extract_day_from_series():
-     """
+    """
     Test that the extract_day function correctly extracts the day 
     from a Pandas Series of ISO 8601 date strings.
 
@@ -38,7 +38,7 @@ def test_extract_day_from_series():
     pd.testing.assert_series_equal(result, expected)
 
 def test_invalid_iso_date_string():
-     """
+    """
     Test that the extract_day function raises a ValueError when
     an invalid ISO 8601 date string is provided.
 
@@ -56,7 +56,7 @@ def test_invalid_iso_date_string():
         pass
 
 def test_invalid_iso_date_series():
-     """
+    """
     Test that the extract_day function raises a ValueError when
     a Pandas Series contains invalid ISO 8601 date strings.
 
@@ -78,7 +78,7 @@ def test_invalid_iso_date_series():
         pass
 
 def test_edge_case_start_of_month():
-     """
+    """
     Test that the extract_day function correctly handles the edge case 
     for the first day of the month.
 
@@ -93,7 +93,7 @@ def test_edge_case_start_of_month():
     assert result == 1, f"Expected 1, but got {result}"
 
 def test_edge_case_end_of_month():
-     """
+    """
     Test that the extract_day function correctly handles the edge case 
     for the last day of the month.
 
