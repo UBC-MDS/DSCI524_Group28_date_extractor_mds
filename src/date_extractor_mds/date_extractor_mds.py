@@ -69,7 +69,7 @@ def extract_month(iso_date: str) -> int:
     pass
 
 
-def extract_day(iso_date: str) -> int:
+def extract_day(datetime_input):
     """
     Extract the day from an ISO 8601 date string.
 
@@ -109,11 +109,11 @@ def extract_day(iso_date: str) -> int:
     # Validate the input if it's a string
     if isinstance(iso_date, str):
         validate_datetime(iso_date)  # Validate fuction
-        return int(iso_date[8:10])  # Extract the day from the string
+        return int(iso_date[8:10])  # Extract the day  from the string
     
     # If the input is a pandas Series
     elif isinstance(iso_date, pd.Series):
-        iso_date.apply(validate_datetime)  # Validate fuction
+        iso_date.apply(validate_datetime)  # Validate  fuction
         return iso_date.apply(lambda x: int(x[8:10])) 
     
     """
