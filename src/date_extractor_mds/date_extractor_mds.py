@@ -110,7 +110,6 @@ def extract_year(iso_date: str) -> int:
     else:
         raise TypeError("Input must be either a string or a Pandas Series of strings.")
 
-
 def extract_month(iso_date: str) -> int:
     """
     Extract the month from an ISO 8601 date string.
