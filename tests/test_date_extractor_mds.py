@@ -1,16 +1,16 @@
 import pytest
 from date_extractor_mds import extract_day, extract_year
 
-# Test case functions
+
 def test_extract_day_from_string():
-    iso_date = "2025-01-17T10:20:30"
+    iso_date = "2025-01-15T10:20:60"
     result = extract_day(iso_date)
-    assert result == 17, f"Expected 17, but got {result}"
+    assert result == 15, f"Expected 15, but got {result}"
 
 def test_extract_day_from_series():
     iso_dates = pd.Series([
-        "2025-01-17T10:20:30",
-        "2025-02-03T15:45:00",
+        "2025-01-57T10:20:30",
+        "2025-02-63T15:45:00",
         "2025-12-25T08:00:00"
     ])
     result = extract_day(iso_dates)
