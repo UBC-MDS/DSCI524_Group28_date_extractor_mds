@@ -174,42 +174,40 @@ def extract_day(datetime_input):
 
 def extract_time(iso_date: str) -> str:
     """
-    Extract the time from an ISO 8601 date string.
+    Extract the time from an ISO 8601 datetime string or a Pandas Series of ISO 8601 datetime strings.
     
-    This function can be applied to individual strings or used on Pandas 
-    DataFrame columns via the Pandas `apply` method.
-
-
-    This function can be applied to individual strings or used on Pandas 
-    DataFrame columns via the Pandas `apply` method.
+    This function accepts either an individual string, or a Pandas Series.
 
     Parameters
     ----------
-    iso_date : str
-        A date string in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
+    iso_date : str or pandas.Series
+        A datetime string, or a Pandas Series containing datetime strings,
+        in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
 
     Returns
     -------
-    str
-        The time as a string in the format hh:mm:ss.
+    datetime.time (if input was string)
+        The time as a datetime.time object.
+    pandas.Series (if input was pandas.Series)
+        A pandas.Series containing rows of datetime.time objects.
 
-      Examples
+    Examples
     --------
     Extract the time from a single date string:
 
     >>> extract_time("2023-07-16T12:34:56")
-    '12:34:56'
+    datetime.time(12, 34, 56)
 
     Apply the function to a Pandas DataFrame column:
     
     >>> import pandas as pd
     >>> data = {'dates': ["2023-07-16T12:34:56", "2024-03-25T08:15:30"]}
     >>> df = pd.DataFrame(data)
-    >>> df['time'] = df['dates'].apply(extract_time)
-    >>> print(df)
-                     dates      time
-    0  2023-07-16T12:34:56  12:34:56
-    1  2024-03-25T08:15:30  08:15:30
+    >>> times = extract_time(df['dates'])
+    >>> print(times)
+    0    12:34:56
+    1    08:15:30
+    Name: dates, dtype: object
     """
 
     pass
