@@ -172,7 +172,7 @@ def extract_day(datetime_input):
     pass
 
 
-def extract_time(iso_date: str) -> str:
+def extract_time(datetime_input) -> str:
     """
     Extract the time from an ISO 8601 datetime string or a Pandas Series of ISO 8601 datetime strings.
     
@@ -209,5 +209,18 @@ def extract_time(iso_date: str) -> str:
     1    08:15:30
     Name: dates, dtype: object
     """
+    validate_datetime(datetime_input)
 
-    pass
+    def extract_single_time(datetime_str):
+        # Given a valid ISO 8601 format string, return the time as a datetime
+        time_string = datetime_str.split('T')[1]
+        time_obj = datetime.strptime(time_string, "%H:%M:%S").time()
+
+        return time_obj
+
+    if isinstance(datetime_input, str):
+        return extract_single_time(datetime_input)
+    elif isinstance(datetime_input, pd.Series):
+        return datetime_input.apply(extract_single_time)
+    else:
+        raise ValueError("Input must be a string or a pandas Series")
