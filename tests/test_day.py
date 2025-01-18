@@ -1,6 +1,6 @@
 import pytest
-from date_extractor_mds import extract_day, extract_year
-
+import pandas as pd
+from date_extractor_mds.date_extractor_mds import extract_day
 
 def test_extract_day_from_string():
     iso_date = "2025-01-15T10:20:60"
@@ -9,12 +9,12 @@ def test_extract_day_from_string():
 
 def test_extract_day_from_series():
     iso_dates = pd.Series([
-        "2025-01-57T10:20:30",
-        "2025-02-63T15:45:00",
+        "2025-01-05T10:20:30",
+        "2025-02-18T15:45:00",
         "2025-12-25T08:00:00"
     ])
     result = extract_day(iso_dates)
-    expected = pd.Series([17, 3, 25])
+    expected = pd.Series([5, 18, 25])
     pd.testing.assert_series_equal(result, expected)
 
 def test_invalid_iso_date_string():
