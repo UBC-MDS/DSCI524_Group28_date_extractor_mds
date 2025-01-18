@@ -71,7 +71,7 @@ def extract_month(iso_date: str) -> int:
 
 
 
-def extract_day(iso_date: str) -> int:
+def extract_day(datetime_input):
     """
     Extract the day from an ISO 8601 date string.
 
@@ -107,28 +107,36 @@ def extract_day(iso_date: str) -> int:
     1    25
     Name: dates, dtype: int64
     """
-    # Handle single string input
-    if isinstance(iso_date, str):
-       
-        day = int(iso_date[8:10])
+    
+    if isinstance(datetime_input, str):
+      
+        validate_datetime(datetime_input)
         
-        # Check if day is valid (between 1 and 31)
+       
+        day = int(datetime_input[8:10])
+        
+        
         if not (1 <= day <= 31):
             raise ValueError(f"Extracted day {day} is not valid. It must be between 1 and 31.")
         
         return day  
 
-    # Handle pandas Series input
-    elif isinstance(iso_date, pd.Series):
+    elif isinstance(datetime_input, pd.Series):
         
-        days = iso_date.apply(lambda x: int(x[8:10]))  # Extract the day and save as series
+        datetime_input.apply(validate_datetime)
         
+        
+        days = datetime_input.apply(lambda x: int(x[8:10]))  
+
         
         if not all(days.between(1, 31)):
-            invalid_days = days[~days.between(1, 31)]  # Find the invalid days
+            invalid_days = days[~days.between(1, 31)]  
             raise ValueError(f"Invalid extracted days found: {invalid_days.tolist()}. They must be between 1 and 31.")
         
-        return days  # Return the series of valid days
+        return days  
+    else:
+        raise TypeError("Input must be either a string or a Pandas Series of strings.")
+
 
 
 
