@@ -83,8 +83,32 @@ def extract_year(iso_date: str) -> int:
     1    2024
     Name: dates, dtype: int64
     """
+    def extract_year_from_string(iso_date: str) -> int:
+        """
+        Extract the year from a single ISO 8601 date string.
+
+        Parameters
+        ----------
+        iso_date : str
+            A date string in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
+
+        Returns
+        -------
+        int
+            The year as a four-digit integer.
+        """
+        return int(iso_date.split("-")[0])
+
+    # Validate the input
     validate_datetime(iso_date)
-    return int(iso_date.split("-")[0])
+
+    # Handle string or Pandas Series input
+    if isinstance(iso_date, str):
+        return extract_year_from_string(iso_date)
+    elif isinstance(iso_date, pd.Series):
+        return iso_date.apply(extract_year_from_string)
+    else:
+        raise TypeError("Input must be either a string or a Pandas Series of strings.")
 
 
 def extract_month(iso_date: str) -> int:
