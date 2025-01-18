@@ -180,7 +180,7 @@ def extract_time(datetime_input) -> str:
 
     Parameters
     ----------
-    iso_date : str or pandas.Series
+    datetime_input : str or pandas.Series
         A datetime string, or a Pandas Series containing datetime strings,
         in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
 
