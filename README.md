@@ -2,7 +2,41 @@
 
 This project provides a Python utility package to extract specific components (year, month, day, and time) from ISO 8601 date strings. These functions can be applied individually or integrated with data analysis workflows in Pandas, simplifying date manipulation and analysis.
 
-## Installation
+## Setup Instructions
+
+### 1. **Install Python**
+
+First, Python version 3.9 or above needs to be installed.
+
+It can be downloaded [here](https://www.python.org/downloads/).
+
+### 2. **Install Poetry**
+
+**Poetry** is the tool used to manage dependencies. You need to install Poetry globally.
+
+Run the following command to install Poetry:
+```bash
+curl -sSL https://install.python-poetry.org | python3 -
+```
+## Running Tests
+
+### 1. Run Poetry Install
+
+In the root of the folder, run in terminal:
+```bash
+poetry install
+```
+
+### 2. Run Tests
+
+Run the follow commands sequentially to check that the tests pass, and to check test coverage:
+```bash
+poetry run pytest
+poetry run pytest --cov=src/date_extractor_mds
+poetry run pytest --cov-branch --cov=src/date_extractor_mds
+```
+
+## Package Installation
 
 ```bash
 $ pip install date_extractor_mds
