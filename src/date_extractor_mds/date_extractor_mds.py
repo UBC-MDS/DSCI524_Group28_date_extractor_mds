@@ -69,7 +69,7 @@ def extract_month(iso_date: str) -> int:
     pass
 
 
-import pandas as pd
+
 
 def extract_day(iso_date: str) -> int:
     """
