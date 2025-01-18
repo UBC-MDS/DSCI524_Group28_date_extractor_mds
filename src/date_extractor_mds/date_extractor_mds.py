@@ -183,16 +183,22 @@ def extract_day(datetime_input):
     """
     validate_datetime(datetime_input)  # Validate fuction
     
-    # Handle single string input
-    if isinstance(datetime_input, str):
-        validate_datetime(datetime_input)  # Validate fuction
-        return int(datetime_input[8:10])  # Extract the day  from the string
     
-    # If the input is a pandas Series
+    if isinstance(datetime_input, str):
+        validate_datetime(datetime_input)
+        day = int(datetime_input[8:10])
+        if not (1 <= day <= 31):
+            raise ValueError(f"Extracted day {day} is not a valid input for day.")
+        return day
+    
+    
     elif isinstance(datetime_input, pd.Series):
-        datetime_input.apply(validate_datetime)  # Validate  fuction
-        return datetime_input.apply(lambda x: int(x[8:10])) 
-
+        datetime_input.apply(validate_datetime)  # Validate each date in the Series
+        days = datetime_input.apply(lambda x: int(x[8:10]))
+        if not all(days.between(1, 31)):
+            invalid_days = days[~days.between(1, 31)]
+            raise ValueError(f"Invalid extracted days found: {invalid_days.tolist()}")
+        return days
 
 def extract_time(datetime_input) -> str:
     """
