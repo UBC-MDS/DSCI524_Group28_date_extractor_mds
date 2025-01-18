@@ -83,7 +83,8 @@ def extract_year(iso_date: str) -> int:
     1    2024
     Name: dates, dtype: int64
     """
-    pass
+    validate_datetime(iso_date)
+    return int(iso_date.split("-")[0])
 
 
 def extract_month(iso_date: str) -> int:
