@@ -61,3 +61,36 @@ def test_edge_case_end_of_day():
     assert result == expected, f"Expected {expected}, but got {result}"
 
 
+def test_empty_string():
+    """Test handling of an empty string."""
+    iso_date = ""
+    try:
+        extract_time(iso_date)
+        assert False, "Expected ValueError for empty string"
+    except ValueError:
+        pass
+
+
+def test_invalid_type():
+    """Test invalid input type."""
+    invalid_input = 12345  # integer input, not a string or Series
+    try:
+        extract_time(invalid_input)
+        assert False, "Expected TypeError for invalid input type"
+    except TypeError:
+        pass
+
+
+def test_invalid_iso8601_format():
+    """Test invalid ISO 8601 format strings."""
+    invalid_dates = [
+        "2025-01-01T12:00",   # Missing seconds
+        "2025/01/01T12:00:00",  # Invalid separator
+        "2025-01-01T25:00:00"   # Invalid hour
+    ]
+    for date in invalid_dates:
+        try:
+            extract_time(date)
+            assert False, f"Expected ValueError for invalid date format {date}"
+        except ValueError:
+            pass
