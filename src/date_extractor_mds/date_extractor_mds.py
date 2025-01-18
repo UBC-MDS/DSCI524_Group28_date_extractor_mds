@@ -209,8 +209,10 @@ def extract_time(datetime_input) -> str:
     1    08:15:30
     Name: dates, dtype: object
     """
+    # Validate the datetime input
     validate_datetime(datetime_input)
 
+    # Define function to extract a single datetime string
     def extract_single_time(datetime_str):
         # Given a valid ISO 8601 format string, return the time as a datetime
         time_string = datetime_str.split('T')[1]
