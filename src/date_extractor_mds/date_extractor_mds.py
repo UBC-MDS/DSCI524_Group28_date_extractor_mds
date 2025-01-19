@@ -106,10 +106,8 @@ def extract_year(iso_date: str) -> int:
     # Handle string or Pandas Series input
     if isinstance(iso_date, str):
         return extract_year_from_string(iso_date)
-    elif isinstance(iso_date, pd.Series):
-        return iso_date.apply(extract_year_from_string)
     else:
-        raise TypeError("Input must be either a string or a Pandas Series of strings.")
+        return iso_date.apply(extract_year_from_string)
 
 def extract_month(input_data) -> str:
     """
@@ -159,12 +157,8 @@ def extract_month(input_data) -> str:
 
     if isinstance(input_data, str):
         return extract_single_month(input_data)
-    elif isinstance(input_data, pd.Series):
-        return input_data.apply(extract_single_month)
     else:
-        raise ValueError("Input must be a string or a pandas Series")
-
-
+        return input_data.apply(extract_single_month)
 
 def extract_day(datetime_input):
     """
@@ -206,19 +200,11 @@ def extract_day(datetime_input):
     
     
     if isinstance(datetime_input, str):
-        validate_datetime(datetime_input)
         day = int(datetime_input[8:10])
-        if not (1 <= day <= 31):
-            raise ValueError(f"Extracted day {day} is not a valid input for day.")
         return day
-    
-    
-    elif isinstance(datetime_input, pd.Series):
+    else:
         datetime_input.apply(validate_datetime)  # Validate each date in the Series
         days = datetime_input.apply(lambda x: int(x[8:10]))
-        if not all(days.between(1, 31)):
-            invalid_days = days[~days.between(1, 31)]
-            raise ValueError(f"Invalid extracted days found: {invalid_days.tolist()}")
         return days
 
 def extract_time(datetime_input) -> str:
@@ -271,7 +257,5 @@ def extract_time(datetime_input) -> str:
 
     if isinstance(datetime_input, str):
         return extract_single_time(datetime_input)
-    elif isinstance(datetime_input, pd.Series):
-        return datetime_input.apply(extract_single_time)
     else:
-        raise ValueError("Input must be a string or a pandas Series")
+        return datetime_input.apply(extract_single_time)
