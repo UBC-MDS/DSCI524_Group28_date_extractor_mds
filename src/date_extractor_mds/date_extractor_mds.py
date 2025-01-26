@@ -4,30 +4,48 @@ from datetime import datetime
 
 def validate_datetime(input_value):
     """
-    Validates whether the input is either:
-    1. A string containing a date in ISO 8601 format (YYYY-MM-DDThh:mm:ss), or
-    2. A Pandas Series containing strings in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
-    
-    If the input does not satisfy these conditions, the function raises:
-    - TypeError: If the input is not a string or a Pandas Series.
-    - ValueError: If the input string or one or more elements in the Series do not match the ISO 8601 format.
-    - ValueError: If the Series contains non-string elements.
-    
-    Parameters:
-    - input_value (str or pandas.Series): The input to validate.
-    
-    Returns:
-    - None: This function does not return a value. It stops execution by raising an exception if validation fails.
+    Validates ISO 8601 datetime format compliance.
+
+    Parameters
+    ----------
+    input_value : str or pandas.Series
+        The input to validate. Can be either a single string or a Pandas Series containing strings.
+
+    Returns
+    -------
+    None
+        This function does not return a value.
+
+    Raises
+    ------
+    TypeError
+        If the input is not a string or a Pandas Series.
+    ValueError
+        If the input string or Series elements don't match ISO 8601 format.
+    ValueError
+        If the Series contains non-string elements.
+
+    Notes
+    -----
+    Valid ISO 8601 format is: YYYY-MM-DDThh:mm:ss
     """
     def is_iso8601_compliant(date_str):
         """
-        Checks if a single string is in ISO 8601 format (YYYY-MM-DDThh:mm:ss).
+        Check if a single string is in ISO 8601 format.
 
-        Parameters:
-        - date_str (str): The string to check.
+        Parameters
+        ----------
+        date_str : str
+            The string to check.
 
-        Returns:
-        - bool: True if the string matches the ISO 8601 format, False otherwise.
+        Returns
+        -------
+        bool
+            True if the string matches the ISO 8601 format, False otherwise.
+
+        Notes
+        -----
+        Valid ISO 8601 format is: YYYY-MM-DDThh:mm:ss
         """
         iso8601_regex = r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$"
         return bool(re.match(iso8601_regex, date_str))
