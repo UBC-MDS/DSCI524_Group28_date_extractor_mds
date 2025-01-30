@@ -2,7 +2,7 @@
 name = "date_extractor_mds"
 version = "0.1.0"
 description = "A package for extracting dates!"
-authors = ["Rashid Mammadov"]
+authors = ["Rashid Mammadov", Fazeeia Mohammed", "Derek Rodgers", "Yibin Long"]
 license = "MIT"
 readme = "README.md"
 
