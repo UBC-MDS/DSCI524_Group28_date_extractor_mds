@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.1.2 (2025-02-01)
+
+### Bug Fixes
+
+- Feedback addressed by derekrodgers. Mentioned by reviewers siddart-1 and interestingtj.
+  ([`b0426de`](https://github.com/UBC-MDS/DSCI524_Group28_date_extractor_mds/commit/b0426de463ef4fc2cfc9bbd5827e7e8dc43e2edf))
+
+
 ## v1.1.1 (2025-01-31)
 
 ### Bug Fixes
