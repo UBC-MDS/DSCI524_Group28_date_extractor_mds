@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.1.3 (2025-02-02)
+
+### Bug Fixes
+
+- Feedback addressed by adding additional example to extract_month function
+  ([`2e02e4c`](https://github.com/UBC-MDS/DSCI524_Group28_date_extractor_mds/commit/2e02e4c5d4682004269c873fb5361b5715a541a1))
+
+
 ## v1.1.2 (2025-02-01)
 
 ### Bug Fixes
