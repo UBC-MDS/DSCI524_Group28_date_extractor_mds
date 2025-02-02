@@ -168,7 +168,24 @@ def extract_month(input_data) -> str:
 
     # Define function to extract a single datetime string
     def extract_single_month(datetime_str):
-        # Given a valid ISO 8601 format string, return the time as a datetime
+        """
+        Given a valid ISO 8601 format string, return the time as a datetime
+
+        Parameters
+        ----------
+        datetime_str : str
+            A valid ISO 8601 date string (e.g., "2023-07-16T12:34:56").
+
+        Returns
+        -------
+        int
+            The month as an integer (1-12).
+
+        Examples
+        --------
+        >>> extract_single_month("2023-07-16T12:34:56")
+        7
+        """
         time_obj = datetime.strptime(datetime_str.split('T')[0], "%Y-%m-%d")
 
         return time_obj.month
