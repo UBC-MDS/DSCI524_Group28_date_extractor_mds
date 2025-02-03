@@ -128,3 +128,4 @@ The Date Extractor Python Package was created by Rashid Mammadov, Derek Rodgers,
 ## Credits
 
 `date_extractor_mds` was created with [`cookiecutter`](https://cookiecutter.readthedocs.io/en/latest/) and the `py-pkgs-cookiecutter` [template](https://github.com/py-pkgs/py-pkgs-cookiecutter).
+ 
