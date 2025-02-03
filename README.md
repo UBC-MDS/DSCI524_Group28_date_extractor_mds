@@ -23,14 +23,18 @@ curl -sSL https://install.python-poetry.org | python3 -
 
 ### 1. Run Poetry Install
 
-In the root of the folder, run in terminal:
+
+In the root of the folder, run in terminal to install dependencies:
 ```bash
 poetry install
 ```
 
 ### 2. Run Tests
 
+1. Install Dependencies
+
 Run the follow commands sequentially to check that the tests pass, and to check test coverage:
+
 ```bash
 poetry run pytest
 poetry run pytest --cov=src/date_extractor_mds
@@ -39,14 +43,19 @@ poetry run pytest --cov-branch --cov=src/date_extractor_mds
 
 ## Package Installation
 
+To install the package, use the following command:
+
 ```bash
 $ pip install date_extractor_mds
 ```
 ## Usage
 
 - extract_year: Extracts the year as a four-digit integer from an ISO 8601 date string.
+
 - extract_month: Retrieves the month as an integer (1-12) from the ISO 8601 date.
+
 - extract_day: Captures the day as an integer (1-31) from the ISO date.
+
 - extract_time: Returns the time component as a string in hh:mm:ss format.
 
 ## Position in Python Ecosystem:
@@ -59,7 +68,10 @@ Interested in contributing? Check out the [Contributing Guidelines](CONTRIBUTING
 
 ## Contributors
 
-Rashid Mammadov, Derek Rodgers, Yibin Long, Fazeeia Mohammed.
+Rashid Mammadov
+Derek Rodgers
+Yibin Long
+Fazeeia Mohammed
 
 ## License
 
