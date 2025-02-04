@@ -76,51 +76,7 @@ $ pip install date_extractor_mds
 ```
 ## Usage
 
-Here are some examples of how to use the package to extract different components from an ISO 8601 date string:
 
-- **extract_year:** 
-    Extracts the year as a four-digit integer from an ISO 8601 date string.
-
-    ```python
-    from date_extractor_mds import extract_year
-
-    date_string = "2025-02-02T14:30:00"
-    year = extract_year(date_string)
-    print(year)  # Output: 2025
-    ```
-
-- **extract_month:**
-    Retrieves the month as an integer (1-12) from the ISO 8601 date.
-
-    ```python
-    from date_extractor_mds import extract_month
-
-    date_string = "2025-02-02T14:30:00"
-    month = extract_month(date_string)
-    print(month)  # Output: 2
-    ```
-
-- **extract_day:**
-    Captures the day as an integer (1-31) from the ISO 8601 date.
-
-    ```python
-    from date_extractor_mds import extract_day
-
-    date_string = "2025-02-02T14:30:00"
-    day = extract_day(date_string)
-    print(day)  # Output: 2
-    ```
-
-- **extract_time:**
-    Returns the time component as a string in hh:mm:ss format.
-
-    ```python
-    from date_extractor_mds import extract_time
-
-    date_string = "2025-02-02T14:30:00"
-    time = extract_time(date_string)
-    print(time)  # Output: 14:30:00
-    ```
 
 ## Position in Python Ecosystem:
 
