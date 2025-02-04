@@ -8,11 +8,24 @@ This project provides a Python utility package to extract specific components (y
 
 ## Setup Instructions 
 
-### 1. **Install Python**
+### 1. **Use Conda Environment**
 
-First, Python version 3.9 or above needs to be installed.
+Make sure you have conda installed. If you don't have it, install it from [here](https://conda-forge.org/miniforge/).
 
-It can be downloaded [here](https://www.python.org/downloads/).
+If needed, set up conda:
+```bash
+bash ${HOME}/Downloads/Miniforge3.sh -b -p "${HOME}/miniforge3"
+source "${HOME}/miniforge3/etc/profile.d/conda.sh"
+conda activate
+conda init
+```
+
+Create and activate the conda environment:
+
+```bash
+conda env create -f environment.yml
+conda activate date_extractor_env
+```
 
 ### 2. **Install Poetry**
 

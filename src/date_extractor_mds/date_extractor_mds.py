@@ -28,6 +28,8 @@ def validate_datetime(input_value):
     Notes
     -----
     Valid ISO 8601 format is: YYYY-MM-DDThh:mm:ss
+
+    Any other format will raise a ValueError.
     """
     def is_iso8601_compliant(date_str):
         """
