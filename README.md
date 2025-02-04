@@ -119,10 +119,10 @@ Interested in contributing? Check out the [Contributing Guidelines](CONTRIBUTING
 
 ## Contributors
 
-Rashid Mammadov
-Derek Rodgers
-Yibin Long
-Fazeeia Mohammed
+- Rashid Mammadov
+- Derek Rodgers
+- Yibin Long
+- Fazeeia Mohammed
 
 ## License
 
