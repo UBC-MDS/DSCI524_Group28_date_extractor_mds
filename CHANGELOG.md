@@ -1,6 +1,22 @@
 # CHANGELOG
 
 
+## v1.2.0 (2025-02-04)
+
+### Bug Fixes
+
+- Address Yajing's feedback to address how edge cases are handled
+  ([`87d2b90`](https://github.com/UBC-MDS/DSCI524_Group28_date_extractor_mds/commit/87d2b906bcd1ecc4deb5012baffd034f4d6e8056))
+
+### Features
+
+- Addressed Yajing's feedback to add environment.yml
+  ([`857e4ac`](https://github.com/UBC-MDS/DSCI524_Group28_date_extractor_mds/commit/857e4acb3cfda598555c6f429ab1dde37e2594f2))
+
+- Addressed Yajing's feedback to use conda, updating readme
+  ([`4ca3f54`](https://github.com/UBC-MDS/DSCI524_Group28_date_extractor_mds/commit/4ca3f54baf18fba2b4ecda049a2f091d90fcd8d6))
+
+
 ## v1.1.4 (2025-02-04)
 
 ### Bug Fixes
