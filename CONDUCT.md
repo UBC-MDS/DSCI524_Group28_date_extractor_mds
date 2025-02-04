@@ -32,10 +32,10 @@ Additionally, we prohibit the publishing of others' private information (physica
 
 Unacceptable behavior will be reported to the project maintainers. All complaints should be reported to, and will be reviewed and investigated fairly and promptly by the project maintainers:
 
-* Derek Rodgers
-* Fazeeia Mohammed
-* Rashid Mammadov
-* Yibin Long
+* Derek Rodgers (derekrodgers [at] gmail [dot] com)
+* Fazeeia Mohammed (mindy [dot] moh [at] gmail [dot] com)
+* Rashid Mammadov (rashid01 [at] bu [dot] edu)
+* Yibin Long (yibinlong1 [at] outlook [dot] com)
 
 Project maintainers will take action against violations of the Code of Conduct. This may include warnings, temporary bans, or permanent bans.
 
