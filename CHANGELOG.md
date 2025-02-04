@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.1.4 (2025-02-04)
+
+### Bug Fixes
+
+- Feedback addressed by adding emails into the conduct file
+  ([`b64082e`](https://github.com/UBC-MDS/DSCI524_Group28_date_extractor_mds/commit/b64082e1eac9a0477c8db45735f6c1c19f5a5a05))
+
+
 ## v1.1.3 (2025-02-02)
 
 ### Bug Fixes
