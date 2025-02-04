@@ -1,6 +1,20 @@
 # CHANGELOG
 
 
+## v1.2.1 (2025-02-04)
+
+### Bug Fixes
+
+- Feedback addressed by Fazeeia Mohammed for Read me updates on package usage
+  ([`7e6831b`](https://github.com/UBC-MDS/DSCI524_Group28_date_extractor_mds/commit/7e6831b026dff0debaa01069ca5d991a32485044))
+
+- Feedback addressed by yibin to fix up contributors
+  ([`ab3d743`](https://github.com/UBC-MDS/DSCI524_Group28_date_extractor_mds/commit/ab3d7430e5b772f94538b400731417dd64dc3922))
+
+- Feedback addressed by yibin to use conda in readme
+  ([`f25d0c4`](https://github.com/UBC-MDS/DSCI524_Group28_date_extractor_mds/commit/f25d0c4767dee6baa6005cb9631bc81600c48e98))
+
+
 ## v1.2.0 (2025-02-04)
 
 ### Bug Fixes

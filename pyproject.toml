@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "date_extractor_mds"
-version = "1.2.0"
+version = "1.2.1"
 description = "A package for extracting dates!"
 authors = ["Rashid Mammadov", "Fazeeia Mohammed", "Derek Rodgers", "Yibin Long"]
 license = "MIT"
